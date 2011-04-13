@@ -1,0 +1,13 @@
+Maven:
+nb fichiers :
+find avsp_maven -name "project.properties" | wc  -l
+64
+find avsp_maven -name "project.xml" | wc  -l
+64
+find avsp_maven -name "maven.xml" | wc  -l
+60
+
+--> 188 fichiers
+
+
+nb lignes au total : 19183
