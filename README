@@ -1,6 +1,6 @@
-= Présentation sur buildr en français.
+h1. Présentation sur buildr en français.
 Les slides sont faits en HTML (Slidy2 du W3C) : cf http://www.w3.org/Talks/Tools/Slidy2
 
-== Liens
+h2. Liens
  * https://github.com/aboisvert/buildr-javazone-2010
  * http://buildr.markmail.org/message/qk7t2h7jglbr7zgh?q=list:users+slide
