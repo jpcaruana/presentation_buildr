@@ -15,23 +15,23 @@ define 'exemple' do
   test.using :java_args =>[ '-Xmx256m','-Xms128m' ],:fork => :once    #Comportement par defaut de test: une jvm par projet (fork=once)
 
 	desc 'la lib A'
-	define 'A'
+	define 'A' do
 		package :jar
 	end
 
 	desc 'la lib B'
-	define 'B'
+	define 'B' do
 		compile.with project('A')
 		package :jar
 	end
 
 	desc 'la lib D'
-	define 'D'
+	define 'D' do
 		package :jar
 	end
 
 	desc 'mon livrable final'
-	define 'C'
+	define 'C' do
 		compile.with projects('A', 'B', 'D')
 		package :war
 	end
