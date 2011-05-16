@@ -1,0 +1,38 @@
+VERSION_NUMBER = "1.0.0-SNAPSHOT"
+GROUP = 'barreverte.fr'
+COPYRIGHT = 'Barre Verte !'
+
+repositories.remote << 'http://www.ibiblio.org/maven2/'
+repositories.remote << 'http://maven01b.int33.cvf:8081/nexus/content/groups/public'
+
+desc 'présentation buildr'
+define 'exemple' do
+
+  project.version = VERSION_NUMBER
+  project.group = GROUP
+
+  compile.using :target=>'1.5', :other=>['-encoding', 'ISO8859_1'], :deprecation=>false, :debug=>true
+  test.using :java_args =>[ '-Xmx256m','-Xms128m' ],:fork => :once    #Comportement par defaut de test: une jvm par projet (fork=once)
+
+	desc 'la lib A'
+	define 'A'
+		package :jar
+	end
+
+	desc 'la lib B'
+	define 'B'
+		compile.with project('A')
+		package :jar
+	end
+
+	desc 'la lib D'
+	define 'D'
+		package :jar
+	end
+
+	desc 'mon livrable final'
+	define 'C'
+		compile.with projects('A', 'B', 'D')
+		package :war
+	end
+end
