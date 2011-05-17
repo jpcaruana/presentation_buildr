@@ -40,20 +40,20 @@
 		<div class="slide">
 			<h1>Maven</h1>
 			<ul>
-				<li> les apports positifs :
+				<li> les apports positifs :-)
 						<ul>
 							<li>standardisation (sources, repos, goals)</li>
 							<li>très répandu</li>
 						</ul>
 				</li>
-				<li> le côté sombre :
+				<li> le côté sombre :-(
 						<ul>
 							<li>leeeeeeeent</li>
 							<li>XML</li>
 							<li>boîte noire</li>
 							<li>difficile à étendre</li>
 							<li>build non incrémental</li>
-							<li>en fait un peu trop</li>
+							<li>en fait un peu trop à mon goût</li>
 						</ul>
 				</li>
 			</ul>
@@ -64,11 +64,60 @@
 			<ul>
 				<li>reprend les bons points issus de maven</li>
 				<li>DSL de build</li>
+				<li>ne fait que du build</li>
 				<li>JVM : java, scala, groovy, clojure...</li>
 				<li>rake</li>
 				<li>ruby</li>
 			</ul>
 			<p> une image des couches buildr/rake/ruby</p>
+		</div>
+
+		<div class="slide">
+			<h1 class="big">Comparatif objectif : les commandes</h1>
+			<table>
+				<tr>
+					<th>maven</th>
+					<th>buildr</th>
+				</tr>
+				<tr class="commande">
+					<td>mvn eclipse:eclipse</td>
+					<td>buildr eclipse</td>
+				</tr>
+				<tr class="commande">
+					<td>mvn compile -Dmaven.test.skip=true</td>
+					<td>buildr compile test=no</td>
+				</tr>
+				<tr class="commande">
+					<td>mvn test -Dtest.match="*MonTest.java"</td>
+					<td>buildr test=MonTest</td>
+				</tr>
+				<tr class="commande">
+					<td></td>
+					<td></td>
+				</tr>
+				<tr class="commande">
+					<td></td>
+					<td></td>
+				</tr>
+				<tr class="commande">
+					<td></td>
+					<td></td>
+				</tr>
+			</table>
+		</div>
+
+		<div class="slide">
+			<h1 class="big">Comparatif objectif</h1>
+			<table>
+				<tr>
+					<th>maven</th>
+					<th>buildr</th>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+			</table>
 		</div>
 
 		<div class="slide centre_verticalement">
@@ -82,9 +131,17 @@
 				<li>très réactif / moins stable</li>
 				<li>nécessité de traduire les artifacts maven</li>
 				<li>peu adopté</li>
-				<li>nécessite un apprentissage</li>
 			</ul>
 		</div>
+
+		<div class="slide">
+			<h1 class="big">Les voisins</h1>
+			<ul>
+				<li>gradle</li>
+				<li>sbt</li>
+			</ul>
+		</div>
+
 
 		<div class="slide">
 			<h1>Références</h1>
