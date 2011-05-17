@@ -24,3 +24,12 @@ table, th, td {
 .commande {
 	font-family: Monospace;
 }
+.condor, .avsp {
+	font-weight: bold;
+}
+.condor {
+	color: #0033CC;
+}
+.avsp {
+	color: #990099;
+}
