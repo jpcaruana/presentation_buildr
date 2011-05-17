@@ -4,22 +4,103 @@
 	<head>
 		<title>Buildr: un outil de build moderne, puissant et efficace</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name="copyright" content= "Copyright &#169; 2011 Jean-Philippe CARUANA (jp@barreverte.fr)" />
+		<meta name="copyright" content= "&#169; 2011 Jean-Philippe CARUANA (jp@barreverte.fr)" />
 		<meta name="duration" content="25" />
 		<link rel="stylesheet" href="./styles/slidy.css" type="text/css" />
+		<link rel="stylesheet" href="./styles/zen.css" type="text/css" />
 		<script src="./scripts/slidy.js" charset="utf-8" type="text/javascript"></script>
 	</head>
 	<body>
+
 		<div class="slide">
-			<h1>Sample heading</h1>
-
-			<p>This is a template file you can copy and edit on your own server.</p>
-
-			<ul>
-				<li>point 1</li>
-				<li>point 2</li>
-				<li>. . .</li>
+			<h1 class="big">buildr</h1>
+			<p>Un outil de buildr moderne, puissant et efficace</p>
+			<p><em>Montre-moi ton build, je te dirai comment se porte ton projet.</em></p>
+			<ul class="bottom">
+				<li>Jean-Philippe Caruana</li>
+				<li>Orange - Multimedia Business Services</li>
+				<li>http://buildr.barreverte.fr/</li>
 			</ul>
+		</div>
+
+		<div class="slide">
+			<h1>Programme</h1>
+			<ul>
+				<li>du code</li>
+				<li>du build</li>
+				<li></li>
+			</ul>
+		</div>
+
+		<div class="slide">
+			<h1>Les outils de build</h1>
+			<p>une image (à faire)</p>
+		</div>
+
+		<div class="slide">
+			<h1>Maven</h1>
+			<ul>
+				<li> les apports positifs :
+						<ul>
+							<li>standardisation (sources, repos, goals)</li>
+							<li>très répandu</li>
+						</ul>
+				</li>
+				<li> le côté sombre :
+						<ul>
+							<li>leeeeeeeent</li>
+							<li>XML</li>
+							<li>boîte noire</li>
+							<li>difficile à étendre</li>
+							<li>build non incrémental</li>
+							<li>en fait un peu trop</li>
+						</ul>
+				</li>
+			</ul>
+		</div>
+
+		<div class="slide">
+			<h1>Buildr</h1>
+			<ul>
+				<li>reprend les bons points issus de maven</li>
+				<li>DSL de build</li>
+				<li>JVM : java, scala, groovy, clojure...</li>
+				<li>rake</li>
+				<li>ruby</li>
+			</ul>
+			<p> une image des couches buildr/rake/ruby</p>
+		</div>
+
+		<div class="slide centre_verticalement">
+			<h1 class="big">exemple</h1>
+		</div>
+
+		<div class="slide">
+			<h1>Les défauts de buildr</h1>
+			<ul>
+				<li>installation difficile (gems)</li>
+				<li>très réactif / moins stable</li>
+				<li>nécessité de traduire les artifacts maven</li>
+				<li>peu adopté</li>
+				<li>nécessite un apprentissage</li>
+			</ul>
+		</div>
+
+		<div class="slide">
+			<h1>Références</h1>
+			<ul>
+				<li>le site officiel : <a href="http://buildr.apache.org/">buildr.apache.org</a></li>
+				<li><a href="http://martinfowler.com/articles/rake.html#DomainSpecificLanguageForBuilds">Martin Fowler "DSL for builds"</a></li>
+				<li><a href="http://johlrogge.wordpress.com/2010/12/14/why-i-dont-like-maven/">Why I don't like maven</a></li>
+				<li><a href="http://dustin.github.com/2010/04/01/why-not-maven.html">Why I don't use maven</a></li>
+				<li>cette présentation : <a href="http://buildr.barreverte.fr/">buildr.barreverte.fr</a></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+
+		<div class="slide centre_verticalement">
+			<h1 class="big">bisou !</h1>
 		</div>
 	</body>
 </html>

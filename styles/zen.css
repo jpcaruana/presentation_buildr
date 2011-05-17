@@ -1,0 +1,18 @@
+div.slide {
+  margin-left: auto; 
+  margin-right: auto; 
+  width: 800px;
+}
+
+h1 {
+	text-align: center;
+}
+h1.big {
+	font-size: huge;
+}
+.centre_verticalement {
+  position:absolute;
+  left: 50%;
+  top: 50%;
+}
+
