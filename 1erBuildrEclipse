@@ -1,0 +1,43 @@
+ buildr clean eclipse 
+(in /home/jpcaruana/src/presentation_buildr/exemple, development)
+Cleaning exemple
+Downloading junit:junit:jar:4.7
+Downloading http://mirrors.ibiblio.org/pub/mirrors/maven2/junit/junit/4.7/junit-4.7.jar
+junit-4.7.jar: 100% |..........................................................................................................................|  226.9KB/226.9KB Time: 00:00:02
+Downloading junit:junit:pom:4.7
+Downloading http://mirrors.ibiblio.org/pub/mirrors/maven2/junit/junit/4.7/junit-4.7.pom
+junit-4.7.pom: 100% |............................................................................................................................|    1.2KB/1.2KB Time: 00:00:00
+Downloading org.jmock:jmock:jar:2.5.1
+Downloading http://mirrors.ibiblio.org/pub/mirrors/maven2/org/jmock/jmock/2.5.1/jmock-2.5.1.jar
+jmock-2.5.1.jar: 100% |........................................................................................................................|  135.0KB/135.0KB Time: 00:00:01
+Downloading org.jmock:jmock:pom:2.5.1
+Downloading http://mirrors.ibiblio.org/pub/mirrors/maven2/org/jmock/jmock/2.5.1/jmock-2.5.1.pom
+jmock-2.5.1.pom: 100% |...........................................................................................................................|     806B/806B Time: 00:00:00
+Downloading org.jmock:jmock-junit4:jar:2.5.1
+Downloading http://mirrors.ibiblio.org/pub/mirrors/maven2/org/jmock/jmock-junit4/2.5.1/jmock-junit4-2.5.1.jar
+jmock-junit4-2.5.1.jar: 100% |...................................................................................................................|    8.4KB/8.4KB Time: 00:00:00
+Downloading org.jmock:jmock-junit4:pom:2.5.1
+Downloading http://mirrors.ibiblio.org/pub/mirrors/maven2/org/jmock/jmock-junit4/2.5.1/jmock-junit4-2.5.1.pom
+jmock-junit4-2.5.1.pom: 100% |...................................................................................................................|    1.0KB/1.0KB Time: 00:00:00
+Downloading org.hamcrest:hamcrest-core:jar:1.1
+Downloading http://mirrors.ibiblio.org/pub/mirrors/maven2/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar
+hamcrest-core-1.1.jar: 100% |...................................................................................................................|   74.8KB/74.8KB Time: 00:00:00
+Downloading org.hamcrest:hamcrest-core:pom:1.1
+Downloading http://mirrors.ibiblio.org/pub/mirrors/maven2/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.pom
+hamcrest-core-1.1.pom: 100% |.....................................................................................................................|     481B/481B Time: 00:00:00
+Downloading org.hamcrest:hamcrest-library:jar:1.1
+Downloading http://mirrors.ibiblio.org/pub/mirrors/maven2/org/hamcrest/hamcrest-library/1.1/hamcrest-library-1.1.jar
+hamcrest-library-1.1.jar: 100% |...............................................................................................................|  108.9KB/108.9KB Time: 00:00:01
+Downloading org.hamcrest:hamcrest-library:pom:1.1
+Downloading http://mirrors.ibiblio.org/pub/mirrors/maven2/org/hamcrest/hamcrest-library/1.1/hamcrest-library-1.1.pom
+hamcrest-library-1.1.pom: 100% |..................................................................................................................|     683B/683B Time: 00:00:00
+Generating Eclipse project for exemple
+Writing /home/jpcaruana/src/presentation_buildr/exemple/A/.classpath
+Writing /home/jpcaruana/src/presentation_buildr/exemple/A/.project
+Writing /home/jpcaruana/src/presentation_buildr/exemple/B/.classpath
+Writing /home/jpcaruana/src/presentation_buildr/exemple/B/.project
+Writing /home/jpcaruana/src/presentation_buildr/exemple/D/.classpath
+Writing /home/jpcaruana/src/presentation_buildr/exemple/D/.project
+Writing /home/jpcaruana/src/presentation_buildr/exemple/C/.classpath
+Writing /home/jpcaruana/src/presentation_buildr/exemple/C/.project
+Completed in 13.284s
