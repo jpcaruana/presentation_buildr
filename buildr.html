@@ -4,7 +4,7 @@
 	<head>
 		<title>Buildr: un outil de build moderne, puissant et efficace</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name="copyright" content= "&#169; 2011 Jean-Philippe CARUANA (jp@barreverte.fr)" />
+		<meta name="copyright" content= "&#169; 2011 Jean-Philippe CARUANA (jp@barreverte.fr) - http://buildr.barreverte.fr" />
 		<meta name="duration" content="25" />
 		<link rel="stylesheet" href="./styles/slidy.css" type="text/css" />
 		<link rel="stylesheet" href="./styles/zen.css" type="text/css" />
@@ -63,8 +63,8 @@
 			<h1>Buildr</h1>
 			<ul>
 				<li>reprend les bons points issus de maven</li>
-				<li>DSL de build</li>
-				<li>ne fait que du build</li>
+				<li>DSL de build, descriptif</li>
+				<li>ne fait que du build... mais peut faire plus assez facilement</li>
 				<li>JVM : java, scala, groovy, clojure...</li>
 				<li>rake</li>
 				<li>ruby</li>
@@ -107,15 +107,42 @@
 		</div>
 
 		<div class="slide">
-			<h1 class="big">Comparatif objectif</h1>
+			<h1 class="big">Comparatif objectif : quelques chiffres</h1>
 			<table>
 				<tr>
-					<th>maven</th>
+					<th></th>
+					<th>maven 1</th>
 					<th>buildr</th>
 				</tr>
 				<tr>
+					<td><span class="condor">Projet A</span> : SLOC</td>
 					<td></td>
 					<td></td>
+				</tr>
+				<tr>
+					<td><span class="condor">Projet A</span> : temps de build total</td>
+					<td>12 min</td>
+					<td>2 min 30</td>
+				</tr>
+				<tr>
+					<td><span class="avsp">Projet B</span> : SLOC</td>
+					<td>19183</td>
+					<td>878</td>
+				</tr>
+				<tr>
+					<td><span class="avsp">Projet B</span> : nombre fichiers</td>
+					<td>188</td>
+					<td>2</td>
+				</tr>
+				<tr>
+					<td><span class="avsp">Projet B</span> : temps de build total</td>
+					<td>difficile à estimer, mais aux environs de la 1/2h</td>
+					<td>7 min</td>
+				</tr>
+				<tr>
+					<td><span class="avsp">Projet B</span> : temps pour faire une release</td>
+					<td>un binome pendant 1/2 journée (avec erreurs)</td>
+					<td>5 min (safe)</td>
 				</tr>
 			</table>
 		</div>
