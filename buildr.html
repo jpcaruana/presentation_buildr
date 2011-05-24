@@ -87,11 +87,11 @@
 					<td>buildr eclipse</td>
 				</tr>
 				<tr class="commande">
-					<td>mvn compile -Dmaven.test.skip=true</td>
-					<td>buildr compile test=no</td>
+					<td>mvn package -Dmaven.test.skip=true</td>
+					<td>buildr package test=no</td>
 				</tr>
 				<tr class="commande">
-					<td>mvn test -Dtest.match="*MonTest.java"</td>
+					<td>mvn test -Dtest=MonTest</td>
 					<td>buildr test=MonTest</td>
 				</tr>
 			</table>
@@ -106,32 +106,32 @@
 					<th>buildr</th>
 				</tr>
 				<tr>
-					<td><span class="condor">Projet A</span> : SLOC</td>
+					<td><span class="condor">Projet Condor</span> : SLOC</td>
 					<td></td>
 					<td>750</td>
 				</tr>
 				<tr>
-					<td><span class="condor">Projet A</span> : temps de build total</td>
+					<td><span class="condor">Projet Condor</span> : temps de build total</td>
 					<td>12 min</td>
 					<td>2 min 30</td>
 				</tr>
 				<tr>
-					<td><span class="avsp">Projet B</span> : SLOC</td>
+					<td><span class="avsp">Projet AVSP</span> : SLOC</td>
 					<td>19183</td>
 					<td>878</td>
 				</tr>
 				<tr>
-					<td><span class="avsp">Projet B</span> : nombre fichiers</td>
+					<td><span class="avsp">Projet AVSP</span> : nombre fichiers</td>
 					<td>188</td>
 					<td>2</td>
 				</tr>
 				<tr>
-					<td><span class="avsp">Projet B</span> : temps de build total</td>
+					<td><span class="avsp">Projet AVSP</span> : temps de build total</td>
 					<td>difficile à estimer, mais aux environs de la 1/2h</td>
 					<td>7 min</td>
 				</tr>
 				<tr>
-					<td><span class="avsp">Projet B</span> : temps pour faire une release</td>
+					<td><span class="avsp">Projet AVSP</span> : temps pour faire une release</td>
 					<td>un binome pendant 1/2 journée (avec erreurs)</td>
 					<td>5 min (safe)</td>
 				</tr>
