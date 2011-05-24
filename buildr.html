@@ -8,6 +8,7 @@
 		<meta name="duration" content="25" />
 		<link rel="stylesheet" href="./styles/slidy.css" type="text/css" />
 		<link rel="stylesheet" href="./styles/zen.css" type="text/css" />
+		<link rel="stylesheet" href="./styles/vim.css" type="text/css" />
 		<script src="./scripts/slidy.js" charset="utf-8" type="text/javascript"></script>
 	</head>
 	<body>
@@ -72,6 +73,7 @@
 				<li>JVM : java, scala, groovy, clojure</li>
 				<li>faites du <em>rake</em> comme M. Jourdain</li>
 				<li><em>ruby</em> à portée de main</li>
+				<li>pas besoin de plugins</li>
 			</ul>
 		</div>
 
@@ -93,6 +95,10 @@
 				<tr class="commande">
 					<td>mvn test -Dtest=MonTest</td>
 					<td>buildr test=MonTest</td>
+				</tr>
+				<tr class="commande">
+					<td>maven test:match -Dmaven.test.match="*MonTest*"</td>
+					<td></td>
 				</tr>
 			</table>
 		</div>
@@ -136,10 +142,142 @@
 					<td>5 min (safe)</td>
 				</tr>
 			</table>
+			
+			<p>Témoignages sur Internet : nombre de lignes de code</p>
+			<table>
+				<tr>
+					<th>maven2 ou ant</th>
+					<th>buildr</th>
+				</tr>
+				<tr>
+					<td>4652</td>
+					<td>698</td>
+				</tr>
+				<tr>
+					<td>768</td>
+					<td>28</td>
+				</tr>
+			</table>
 		</div>
 
 		<div class="slide centre_verticalement">
 			<h1 class="big">exemple</h1>
+			<pre>
+<span class="Type">VERSION_NUMBER</span> = <span class="Special">&quot;</span><span class="Constant">1.0.0-SNAPSHOT</span><span class="Special">&quot;</span>
+<span class="Type">GROUP</span> = <span class="Special">'</span><span class="Constant">barreverte.fr</span><span class="Special">'</span>
+<span class="Type">COPYRIGHT</span> = <span class="Special">'</span><span class="Constant">Barre Verte !</span><span class="Special">'</span>
+
+repositories.remote &lt;&lt; <span class="Special">'</span><span class="Constant"><a href="http://www.ibiblio.org/maven2/">http://www.ibiblio.org/maven2/</a></span><span class="Special">'</span>
+
+desc <span class="Special">'</span><span class="Constant">présentation buildr</span><span class="Special">'</span>
+define <span class="Special">'</span><span class="Constant">exemple</span><span class="Special">'</span> <span class="Statement">do</span>
+  project.version = <span class="Type">VERSION_NUMBER</span>
+  project.group = <span class="Type">GROUP</span>
+
+  compile.using <span class="Constant">:target</span>=&gt;<span class="Special">'</span><span class="Constant">1.5</span><span class="Special">'</span>, <span class="Constant">:other</span>=&gt;[<span class="Special">'</span><span class="Constant">-encoding</span><span class="Special">'</span>, <span class="Special">'</span><span class="Constant">ISO8859_1</span><span class="Special">'</span>], <span class="Constant">:deprecation</span>=&gt;<span class="Constant">false</span>, <span class="Constant">:debug</span>=&gt;<span class="Constant">true</span>
+
+  desc <span class="Special">'</span><span class="Constant">la lib A</span><span class="Special">'</span>
+  define <span class="Special">'</span><span class="Constant">A</span><span class="Special">'</span> <span class="Statement">do</span>
+    package <span class="Constant">:jar</span>
+  <span class="Statement">end</span>
+
+  desc <span class="Special">'</span><span class="Constant">la lib B</span><span class="Special">'</span>
+  define <span class="Special">'</span><span class="Constant">B</span><span class="Special">'</span> <span class="Statement">do</span>
+    compile.with project(<span class="Special">'</span><span class="Constant">A</span><span class="Special">'</span>)
+    package <span class="Constant">:jar</span>
+  <span class="Statement">end</span>
+
+  desc <span class="Special">'</span><span class="Constant">la lib D</span><span class="Special">'</span>
+  define <span class="Special">'</span><span class="Constant">D</span><span class="Special">'</span> <span class="Statement">do</span>
+    package <span class="Constant">:jar</span>
+  <span class="Statement">end</span>
+
+  desc <span class="Special">'</span><span class="Constant">mon livrable final</span><span class="Special">'</span>
+  define <span class="Special">'</span><span class="Constant">C</span><span class="Special">'</span> <span class="Statement">do</span>
+    compile.with projects(<span class="Special">'</span><span class="Constant">A</span><span class="Special">'</span>, <span class="Special">'</span><span class="Constant">B</span><span class="Special">'</span>, <span class="Special">'</span><span class="Constant">D</span><span class="Special">'</span>)
+    package <span class="Constant">:war</span>
+  <span class="Statement">end</span>
+<span class="Statement">end</span> </pre>
+		</div>
+
+		<div class="slide">
+			<h1 class="big">exemples</h1>
+			<ul>
+				<li>ajouter des dépendances :
+					<pre>
+desc <span class="Special">'</span><span class="Constant">infrastructure commune</span><span class="Special">'</span>
+define <span class="Special">'</span><span class="Constant">commons</span><span class="Special">'</span> <span class="Statement">do</span>
+  compile.with <span class="Type">LOG4J</span>, <span class="Type">MYSQL</span>, <span class="Type">SERVLET_API</span>, <span class="Type">COMMONS_LANG</span>, <span class="Type">XSTREAM</span>
+  test.with <span class="Type">JDOM</span>, <span class="Special">'</span><span class="Constant">jspapi:jsp-api:jar:2.0</span><span class="Special">'</span>, <span class="Type">MOCKRUNNER</span>, <span class="Type">SPRING</span>, <span class="Type">SPRING_MOCK</span>, <span class="Type">MOCKITO</span>, <span class="Type">FEST</span>
+  package <span class="Constant">:jar</span>
+<span class="Statement">end</span> </pre>
+				</li>
+				<li>grouper des dépendances :
+					<pre>
+<span class="Type">SPRING_DAO</span> = <span class="Type">Buildr</span>::group(<span class="Special">'</span><span class="Constant">spring-beans</span><span class="Special">'</span>, <span class="Special">'</span><span class="Constant">spring-core</span><span class="Special">'</span>, <span class="Special">'</span><span class="Constant">spring-dao</span><span class="Special">'</span>, <span class="Special">'</span><span class="Constant">spring-jdbc</span><span class="Special">'</span>,
+  <span class="Constant">:under</span>=&gt;<span class="Special">'</span><span class="Constant">org.springframework</span><span class="Special">'</span>, <span class="Constant">:version</span>=&gt;<span class="Special">'</span><span class="Constant">1.2.6</span><span class="Special">'</span>) </pre>
+				</li>
+				<li>sortir du standard maven2/buildr :
+					<pre>test.resources.from _(<span class="Constant">:src</span>, <span class="Constant">:test</span>, <span class="Constant">:data</span>) </pre>
+				</li>
+				<li>archive dans un format spécifique :
+					<pre>
+lib_generee = package <span class="Constant">:jar</span>
+livrable = package <span class="Constant">:tgz</span>
+livrable.include _(<span class="Special">'</span><span class="Constant">src/main/batch</span><span class="Special">'</span>), <span class="Constant">:as</span>=&gt;<span class="Special">'</span><span class="Constant">batch</span><span class="Special">'</span> 
+livrable.path(<span class="Special">'</span><span class="Constant">batch/lib</span><span class="Special">'</span>).include lib_generee, compile.dependencies </pre>
+				</li>
+				<li>faire des asserts sur les binaires :
+					<pre>check livrable, <span class="Special">&quot;</span><span class="Constant">doit embarquer le jar scala-library. Merci de verifier si votre 
+$SCALA_HOME pointe bien vers un répertoire valide</span><span class="Special">&quot;</span> <span class="Statement">do</span>
+  it.should contain(<span class="Special">'</span><span class="Constant">batch/lib/scala-library.jar</span><span class="Special">'</span>)
+<span class="Statement">end</span> </pre>
+				</li>
+				<li>des droits de fichiers spécifiques :
+					<pre>
+chmod <span class="Constant">0755</span>, <span class="Type">Dir</span>[_(<span class="Special">'</span><span class="Constant">src/main/avsp-batch/bin/*</span><span class="Special">'</span>)]
+chmod <span class="Constant">0644</span>, <span class="Type">FileList</span>[_(<span class="Special">'</span><span class="Constant">src/main/avsp-batch/etc/**/*.properties</span><span class="Special">'</span>)] </pre>
+				</li>
+				<li>dépendances entre taches <em>rake</em>
+					<pre>task <span class="Constant">:fitnesse</span> =&gt; [<span class="Constant">:prerequis_fitnesse</span>, <span class="Constant">:fitnesse_wiki_seul</span>] </pre>
+				</li>
+				<li>intégration transparente avec les taches <em>Ant</em> :
+					<pre>
+task <span class="Constant">:fitnesse_wiki_seul</span> <span class="Statement">do</span> |<span class="Identifier">t</span>|
+  ant(t.name) <span class="Statement">do</span> |<span class="Identifier">ant</span>|
+    ant.taskdef <span class="Constant">:name</span>=&gt;<span class="Special">'</span><span class="Constant">start_fitnesse</span><span class="Special">'</span>, <span class="Constant">:classname</span>=&gt;<span class="Special">'</span><span class="Constant">fitnesse.ant.StartFitnesseTask</span><span class="Special">'</span>,
+<span class="Constant">:classpath</span>=&gt;<span class="Type">FITNESSE_JAR</span>
+    ant.start_fitnesse <span class="Constant">:wikidirectoryrootpath</span>=&gt;_(<span class="Special">'</span><span class="Constant">src/main</span><span class="Special">'</span>), <span class="Constant">:fitnesseport</span>=&gt;<span class="Constant">8082</span> 
+  <span class="Statement">end</span>
+<span class="Statement">end</span> </pre>
+				</li>
+				<li>plusieurs jars en un seul :
+					<pre>
+bouchons = package <span class="Constant">:jar</span>, <span class="Constant">:file</span>=&gt;_(<span class="Special">'</span><span class="Constant">target/bouchons.jar</span><span class="Special">'</span>)
+bouchons.merge artifacts(<span class="Type">COMMONS_HTTPCLIENT</span>, <span class="Type">COMMONS_LANG</span>, <span class="Type">LOG4J</span>, project(<span class="Special">'</span><span class="Constant">commons-test</span><span class="Special">'</span>)) </pre>
+				</li>
+				<li>ajouter des taches <em>ant</em> avant une commande buildr :
+					<pre>compile.enhance [<span class="Special">'</span><span class="Constant">ma_jolie_tache_ant</span><span class="Special">'</span>] </pre>
+				</li>
+				<li>setup de tests :
+					<pre>
+test.setup { <span class="Type">Rake</span>::<span class="Type">Task</span>[<span class="Special">'</span><span class="Constant">une_belle_tache_rake</span><span class="Special">'</span>].execute } </pre>
+				</li>
+				<li>personaliser le fichier <em>manifest</em> :
+					<pre>
+manifest[<span class="Special">'</span><span class="Constant">Implementation-Version</span><span class="Special">'</span>] = project.version
+manifest[<span class="Special">'</span><span class="Constant">Copyright</span><span class="Special">'</span>]              = <span class="Type">COPYRIGHT</span>
+manifest[<span class="Special">'</span><span class="Constant">Mon-Champ-Personalise</span><span class="Special">'</span>]  = <span class="Type">TOUTE_AUTRE_VALEUR</span> </pre>
+				</li>
+				<li>paramétrer les <em>repositories</em> maven2 :
+					<pre>
+repositories.remote &lt;&lt; <span class="Special">'</span><span class="Constant"><a href="http://www.ibiblio.org/maven2/">http://www.ibiblio.org/maven2/</a></span><span class="Special">'</span>
+repositories.remote &lt;&lt; <span class="Special">'</span><span class="Constant"><a href="http://mirrors.ibiblio.org/pub/mirrors/maven2">http://mirrors.ibiblio.org/pub/mirrors/maven2</a></span><span class="Special">'</span>
+repositories.remote &lt;&lt; <span class="Special">'</span><span class="Constant"><a href="http://maven01b.serveur:8081/nexus/content/groups/public">http://maven01b.serveur:8081/nexus/content/groups/public</a></span><span class="Special">'</span>
+repositories.release_to = { <span class="Constant">:url</span>=&gt;<span class="Special">'</span><span class="Constant">sftp://maven01b.serveur:/var/maven-projets/maven</span><span class="Special">'</span>,
+  <span class="Constant">:username</span>=&gt;<span class="Special">'</span><span class="Constant">robert.johnson</span><span class="Special">'</span>, <span class="Constant">:password</span>=&gt;<span class="Special">'</span><span class="Constant">Xroads</span><span class="Special">'</span> } </pre>
+				</li>
+			</ul>
 		</div>
 
 		<div class="slide">
@@ -154,9 +292,10 @@
 
 		<div class="slide">
 			<h1 class="big">Les voisins</h1>
+			<p>buildr, build like you code</p>
 			<ul>
-				<li>gradle</li>
-				<li>sbt</li>
+				<li>Gradle : a better way to build (<a href=http://www.gradle.org/">http://www.gradle.org/</a>)</li>
+				<li>sbt : a simple build tool for Scala projects (<a href="http://code.google.com/p/simple-build-tool/">http://code.google.com/p/simple-build-tool/</a>)</li>
 			</ul>
 		</div>
 

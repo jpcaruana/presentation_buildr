@@ -1,0 +1,10 @@
+pre { font-family: monospace; color: #ffffff; background-color: #000000; }
+.Todo { color: #0000ff; background-color: #ffff00; }
+.Comment { color: #80a0ff; }
+.Statement { color: #ffff60; font-weight: bold; }
+.Identifier { color: #40ffff; }
+.PreProc { color: #ff80ff; }
+.Constant { color: #ffa0a0; }
+.Special { color: #ffa500; }
+.Type { color: #60ff60; font-weight: bold; }
+

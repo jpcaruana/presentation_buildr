@@ -7,12 +7,10 @@ repositories.remote << 'http://maven01b.int33.cvf:8081/nexus/content/groups/publ
 
 desc 'présentation buildr'
 define 'exemple' do
-
   project.version = VERSION_NUMBER
   project.group = GROUP
 
   compile.using :target=>'1.5', :other=>['-encoding', 'ISO8859_1'], :deprecation=>false, :debug=>true
-  test.using :java_args =>[ '-Xmx256m','-Xms128m' ],:fork => :once    #Comportement par defaut de test: une jvm par projet (fork=once)
 
 	desc 'la lib A'
 	define 'A' do
