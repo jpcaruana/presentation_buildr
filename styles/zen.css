@@ -14,9 +14,6 @@ div.jp {
 h1, p, img {
 	text-align: center;
 }
-h1.big {
-	font-size: huge;
-}
 .centre_verticalement {
   position:absolute;
   left: 50%;
