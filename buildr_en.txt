@@ -1,0 +1,11 @@
+Buildr is build on top of rake, "the ruby make", and ruby. Buildr keeps maven good habits (repositories, standard sources layout, standard commands such as compile, test, install...) but remains a simple and easy to extend tool.
+
+We will see concrete exemples of real buildfiles. We will also see what benefits are brought by rake and all the possibilities available with the ruby language.
+
+A few before/after maven and buildr examples :
+* telecom project : build goes from 12 min to 2 min : feedback is faster and clearer. The team now dares to dramatically improves its product.
+* video projet : build shrinks from 14000 SLOC (maven 1) to 800 : release duration and risk dramatically reduced on a very risky project.
+
+buildr is available at buildr.apache.org : an active and open community in the US and in Europe.
+
+(I already gave this session at Conférence Agile France 2011 : see http://buildr.barreverte.fr/ for this session in french)
