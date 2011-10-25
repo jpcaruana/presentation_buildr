@@ -42,7 +42,7 @@
 			<ul>
 				<li>we'll talk about build</li>
 				<li>we'll see some code (a little)</li>
-				<li>I hope I'll give you the will to try buildr</li>
+				<li>I hope you'll want to try it</li>
 				<li>... and adopt it</li>
 			</ul>
 		</div>
@@ -58,7 +58,7 @@
 				<li> the bright side :-)
 						<ul>
 							<li>standardization (sources, repos, goals)</li>
-							<li>wildly widespread</li>
+							<li>very widespread</li>
 						</ul>
 				</li>
 				<li> the dark side :-(
@@ -68,7 +68,7 @@
 							<li>black box</li>
 							<li>hard to extend</li>
 							<li>non incremental build</li>
-							<li>wants to do too much (archetypes, site)</li>
+							<li>does too much and sometimes bites off more than it can chew</li>
 						</ul>
 				</li>
 			</ul>
@@ -78,12 +78,12 @@
 			<h1>Buildr</h1>
 			<div class="gauche"><img src="./graphics/buildr_rake_ruby.png" /></div>
 			<ul class="droite">
-				<li>uses the bright side of maven</li>
+				<li>based on the good ideas of maven</li>
 				<li><em>"internal"</em> descriptive build DSL</li>
 				<li>just builds... incrementaly, continuously</li>
 				<li>JVM : java, scala, groovy, clojure</li>
-				<li>no need for plugins plugins</li>
-				<li>write some <em>rake</em> without noticing it</li>
+				<li>no need for plugins</li>
+				<li>write some <em>rake</em> without knowing it</li>
 				<li><em>ruby</em> at hand</li>
 				<li>code is dynamic : readable and easy to understand/patch source code</li>
 			</ul>
@@ -146,7 +146,7 @@
 				<tr>
 					<td><span class="avsp">AVSP</span> : number of files</td>
 					<td>188</td>
-					<td>2</td>
+					<td>1</td>
 				</tr>
 				<tr>
 					<td><span class="avsp">AVSP</span> : total build time</td>
@@ -154,8 +154,8 @@
 					<td>7 min</td>
 				</tr>
 				<tr>
-					<td><span class="avsp">AVSP</span> : release time</td>
-					<td>two people binome 1/2 day (with mistakes)</td>
+					<td><span class="avsp">AVSP</span> : releasing </td>
+					<td>two people binome 1/2 day (unsafe)</td>
 					<td>5 min (safe)</td>
 				</tr>
 			</table>
@@ -178,7 +178,7 @@
 		</div>
 
 		<div class="slide centre_verticalement">
-			<h1 class="big">exemple</h1>
+			<h1 class="big">example</h1>
 			<pre>
 <span class="Type">VERSION_NUMBER</span> = <span class="Special">&quot;</span><span class="Constant">1.0.0-SNAPSHOT</span><span class="Special">&quot;</span>
 <span class="Type">GROUP</span> = <span class="Special">'</span><span class="Constant">barreverte.fr</span><span class="Special">'</span>
@@ -187,7 +187,7 @@
 repositories.remote &lt;&lt; <span class="Special">'</span><span class="Constant"><a href="http://www.ibiblio.org/maven2/">http://www.ibiblio.org/maven2/</a></span><span class="Special">'</span>
 
 desc <span class="Special">'</span><span class="Constant">buildr session</span><span class="Special">'</span>
-define <span class="Special">'</span><span class="Constant">exemple</span><span class="Special">'</span> <span class="Statement">do</span>
+define <span class="Special">'</span><span class="Constant">example</span><span class="Special">'</span> <span class="Statement">do</span>
   project.version = <span class="Type">VERSION_NUMBER</span>
   project.group = <span class="Type">GROUP</span>
 
@@ -220,7 +220,7 @@ define <span class="Special">'</span><span class="Constant">exemple</span><span 
 		<div class="slide">
 			<h1 class="big">examples</h1>
 			<ul>
-				<li>add dependancies :
+				<li>add dependencies :
 					<pre>
 desc <span class="Special">'</span><span class="Constant">common infrastructure</span><span class="Special">'</span>
 define <span class="Special">'</span><span class="Constant">commons</span><span class="Special">'</span> <span class="Statement">do</span>
@@ -229,7 +229,7 @@ define <span class="Special">'</span><span class="Constant">commons</span><span 
   package <span class="Constant">:jar</span>
 <span class="Statement">end</span> </pre>
 				</li>
-				<li>group dependancies :
+				<li>group dependencies :
 					<pre>
 <span class="Type">SPRING_DAO</span> = <span class="Type">Buildr</span>::group(<span class="Special">'</span><span class="Constant">spring-beans</span><span class="Special">'</span>, <span class="Special">'</span><span class="Constant">spring-core</span><span class="Special">'</span>, <span class="Special">'</span><span class="Constant">spring-dao</span><span class="Special">'</span>, <span class="Special">'</span><span class="Constant">spring-jdbc</span><span class="Special">'</span>,
   <span class="Constant">:under</span>=&gt;<span class="Special">'</span><span class="Constant">org.springframework</span><span class="Special">'</span>, <span class="Constant">:version</span>=&gt;<span class="Special">'</span><span class="Constant">1.2.6</span><span class="Special">'</span>) </pre>
@@ -250,17 +250,17 @@ $SCALA_HOME points to a  valid folder</span><span class="Special">&quot;</span> 
   it.should contain(<span class="Special">'</span><span class="Constant">batch/lib/scala-library.jar</span><span class="Special">'</span>)
 <span class="Statement">end</span> </pre>
 				</li>
-				<li>custom file rights :
+				<li>customize file permissions :
 					<pre>
 chmod <span class="Constant">0755</span>, <span class="Type">Dir</span>[_(<span class="Special">'</span><span class="Constant">src/main/avsp-batch/bin/*</span><span class="Special">'</span>)]
 chmod <span class="Constant">0644</span>, <span class="Type">FileList</span>[_(<span class="Special">'</span><span class="Constant">src/main/avsp-batch/etc/**/*.properties</span><span class="Special">'</span>)] </pre>
 				</li>
-				<li><em>rake</em> taks dependencies :
-					<pre>task <span class="Constant">:fitnesse</span> =&gt; [<span class="Constant">:prerequis_fitnesse</span>, <span class="Constant">:fitnesse_wiki_seul</span>] </pre>
+				<li><em>rake</em> tasks dependencies :
+					<pre>task <span class="Constant">:fitnesse</span> =&gt; [<span class="Constant">:prerequis_fitnesse</span>, <span class="Constant">:fitnesse_wiki</span>] </pre>
 				</li>
-				<li>transperent integration with <em>Ant</em> tasks :
+				<li>painless integration with <em>Ant</em> tasks :
 					<pre>
-task <span class="Constant">:fitnesse_wiki_seul</span> <span class="Statement">do</span> |<span class="Identifier">t</span>|
+task <span class="Constant">:fitnesse_wiki</span> <span class="Statement">do</span> |<span class="Identifier">t</span>|
   ant(t.name) <span class="Statement">do</span> |<span class="Identifier">ant</span>|
     ant.taskdef <span class="Constant">:name</span>=&gt;<span class="Special">'</span><span class="Constant">start_fitnesse</span><span class="Special">'</span>, <span class="Constant">:classname</span>=&gt;<span class="Special">'</span><span class="Constant">fitnesse.ant.StartFitnesseTask</span><span class="Special">'</span>,
 <span class="Constant">:classpath</span>=&gt;<span class="Type">FITNESSE_JAR</span>
@@ -270,15 +270,15 @@ task <span class="Constant">:fitnesse_wiki_seul</span> <span class="Statement">d
 				</li>
 				<li>merge jars :
 					<pre>
-bouchons = package <span class="Constant">:jar</span>, <span class="Constant">:file</span>=&gt;_(<span class="Special">'</span><span class="Constant">target/bouchons.jar</span><span class="Special">'</span>)
-bouchons.merge artifacts(<span class="Type">COMMONS_HTTPCLIENT</span>, <span class="Type">COMMONS_LANG</span>, <span class="Type">LOG4J</span>, project(<span class="Special">'</span><span class="Constant">commons-test</span><span class="Special">'</span>)) </pre>
+stubs = package <span class="Constant">:jar</span>, <span class="Constant">:file</span>=&gt;_(<span class="Special">'</span><span class="Constant">target/stubs.jar</span><span class="Special">'</span>)
+stubs.merge artifacts(<span class="Type">COMMONS_HTTPCLIENT</span>, <span class="Type">COMMONS_LANG</span>, <span class="Type">LOG4J</span>, project(<span class="Special">'</span><span class="Constant">commons-test</span><span class="Special">'</span>)) </pre>
 				</li>
 				<li>add <em>ant</em> tasks before a buildr goal :
-					<pre>compile.enhance [<span class="Special">'</span><span class="Constant">ma_jolie_tache_ant</span><span class="Special">'</span>] </pre>
+					<pre>compile.enhance [<span class="Special">'</span><span class="Constant">my_pretty_ant_task</span><span class="Special">'</span>] </pre>
 				</li>
 				<li>test setup :
 					<pre>
-test.setup { <span class="Type">Rake</span>::<span class="Type">Task</span>[<span class="Special">'</span><span class="Constant">une_belle_tache_rake</span><span class="Special">'</span>].execute } </pre>
+test.setup { <span class="Type">Rake</span>::<span class="Type">Task</span>[<span class="Special">'</span><span class="Constant">a_nice_rake_task</span><span class="Special">'</span>].execute } </pre>
 				</li>
 				<li>customize <em>manifest</em> file :
 					<pre>
@@ -301,7 +301,7 @@ repositories.release_to = { <span class="Constant">:url</span>=&gt;<span class="
 			<h1>Dark side of buildr</h1>
 			<ul>
 				<li>hard to install (gems)</li>
-				<li>living code base (can be unstable)</li>
+				<li>dynamic code base (can be unstable)</li>
 				<li>you'll need to translate your maven artifacts</li>
 				<li>not widespread</li>
 			</ul>
@@ -317,7 +317,7 @@ repositories.release_to = { <span class="Constant">:url</span>=&gt;<span class="
 		</div>
 
 		<div class="slide">
-			<h1>Références</h1>
+			<h1>References</h1>
 			<ul>
 				<li>offical website : <a href="http://buildr.apache.org/">buildr.apache.org</a></li>
 				<li><a href="http://martinfowler.com/articles/rake.html#DomainSpecificLanguageForBuilds">Martin Fowler "DSL for builds"</a></li>
