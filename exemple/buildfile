@@ -5,30 +5,30 @@ COPYRIGHT = 'Barre Verte !'
 repositories.remote << 'http://www.ibiblio.org/maven2/'
 repositories.remote << 'http://maven01b.int33.cvf:8081/nexus/content/groups/public'
 
-desc 'présentation buildr'
-define 'exemple' do
+desc 'a buildr example'
+define 'example' do
   project.version = VERSION_NUMBER
   project.group = GROUP
 
   compile.using :target=>'1.5', :other=>['-encoding', 'ISO8859_1'], :deprecation=>false, :debug=>true
 
-	desc 'la lib A'
+	desc 'lib A'
 	define 'A' do
 		package :jar
 	end
 
-	desc 'la lib B'
+	desc 'lib B'
 	define 'B' do
 		compile.with project('A')
 		package :jar
 	end
 
-	desc 'la lib D'
+	desc 'lib D'
 	define 'D' do
 		package :jar
 	end
 
-	desc 'mon livrable final'
+	desc 'my deliverable'
 	define 'C' do
 		compile.with projects('A', 'B', 'D')
 		package :war
