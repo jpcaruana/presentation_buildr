@@ -1,4 +1,4 @@
-VERSION_NUMBER = "1.4.0"
+VERSION_NUMBER = "2.0.0-SNAPSHOT"
 GROUP = 'barreverte.fr'
 COPYRIGHT = 'Barre Verte !'
 
