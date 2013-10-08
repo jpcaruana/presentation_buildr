@@ -11,7 +11,7 @@ repositories.remote << 'http://maven01b.int33.cvf:8081/nexus/content/groups/publ
 #  new_version
 #end
 
-desc 'présentation buildr'
+desc 'presentation buildr'
 define 'exemple' do
   project.version = VERSION_NUMBER
   project.group = GROUP
