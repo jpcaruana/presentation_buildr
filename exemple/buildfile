@@ -5,7 +5,7 @@ COPYRIGHT = 'Barre Verte !'
 repositories.remote << 'http://www.ibiblio.org/maven2/'
 repositories.remote << 'http://maven01b.int33.cvf:8081/nexus/content/groups/public'
 
-desc 'présentation buildr'
+desc 'presentation buildr'
 define 'exemple' do
   project.version = VERSION_NUMBER
   project.group = GROUP
