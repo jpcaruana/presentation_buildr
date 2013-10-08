@@ -10,7 +10,7 @@ define 'exemple' do
   project.version = VERSION_NUMBER
   project.group = GROUP
 
-  compile.using :target=>'1.5', :other=>['-encoding', 'ISO8859_1'], :deprecation=>false, :debug=>true
+  compile.using :source => '1.5', :target=>'1.5', :other=>['-encoding', 'ISO8859_1'], :deprecation=>false, :debug=>true
 
 	desc 'la lib A'
 	define 'A' do
