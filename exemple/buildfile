@@ -5,6 +5,12 @@ COPYRIGHT = 'Barre Verte !'
 repositories.remote << 'http://www.ibiblio.org/maven2/'
 repositories.remote << 'http://maven01b.int33.cvf:8081/nexus/content/groups/public'
 
+Release.next_version = lambda do |this_version|
+  new_version = VERSION_NUMBER.split /\./
+  new_version[1] = new_version[1].to_i + 1
+  new_version.join '.'
+end
+
 desc 'présentation buildr'
 define 'exemple' do
   project.version = VERSION_NUMBER
