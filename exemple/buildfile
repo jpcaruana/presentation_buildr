@@ -1,4 +1,4 @@
-VERSION_NUMBER = "1.0.1-SNAPSHOT"
+VERSION_NUMBER = "1.1.0-SNAPSHOT"
 GROUP = 'barreverte.fr'
 COPYRIGHT = 'Barre Verte !'
 
@@ -11,11 +11,11 @@ else
   'http://maven.target2sell.com/content/repositories/releases/'
 end
 
-#Release.next_version = lambda do |this_version|
-#  new_version = VERSION_NUMBER.split /\./
-#  new_version[1] = new_version[1].to_i + 1
-#  new_version
-#end
+Release.next_version = lambda do |this_version|
+  new_version = VERSION_NUMBER.split /\./
+  new_version[1] = new_version[1].to_i + 1
+  new_version
+end
 
 desc 'presentation buildr'
 define 'exemple' do
