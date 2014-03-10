@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="slides.css">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  </head>
+  <body>
+    <textarea id="source">
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+# buildr
+## Un outil de buildr moderne, puissant et efficace
+
+Montre-moi ton build, je te dirai comment se porte ton projet.
+
+Jean-Philippe Caruana
+.footnote[http://buildr.barreverte.fr/]
+
+---
+layout: false
+#Aujourd'hui
+- on va parler de build
+- on va voir du code (un peu)
+- j'espère vous donner envie d'essayer buildr
+- ... et de l'adopter
+
+---
+## les outils de build
+![](graphics/outils_de_build.png)
+
+---
+template: inverse
+# Maven
+
+---
+##Maven
+- les apports positifs :-)
+    - standardisation (sources, repos, goals)
+    - très répandu
+- le côté sombre :-(
+    - lent
+    - XML
+    - boîte noire
+    - difficile à étendre
+    - build non incrémental
+    - en fait un peu trop (archetypes, site)
+
+---
+template: inverse
+# Buildr
+
+---
+##Buildr
+- reprend les bons points issus de maven
+- DSL "interne" de build, descriptif
+- ne fait que du build... incrémental, en continu
+- JVM : java, scala, groovy, clojure
+- pas besoin de plugins
+- faites du rake comme M. Jourdain
+- ruby à portée de main
+- code dynamique : code source lisible, facile à comprendre et à patcher
+
+![](graphics/buildr_rake_ruby.png)
+
+---
+##Comparatif objectif : quelques commandes
+<table border="1">
+        <tr>
+          <th>maven</th>
+          <th>buildr</th>
+        </tr>
+        <tr class="commande">
+          <td>mvn eclipse:eclipse</td>
+          <td>buildr eclipse</td>
+        </tr>
+        <tr class="commande">
+          <td>mvn package -Dmaven.test.skip=true</td>
+          <td>buildr package test=no</td>
+        </tr>
+        <tr class="commande">
+          <td>mvn test -Dtest=MonTest</td>
+          <td>buildr test=MonTest</td>
+        </tr>
+        <tr class="commande">
+          <td>maven test:match -Dmaven.test.match="*MonTest*"</td>
+          <td></td>
+        </tr>
+      </table>
+
+---
+##Comparatif objectif : quelques chiffres
+<table border="1">
+        <tr>
+          <th></th>
+          <th>maven 1</th>
+          <th>buildr</th>
+        </tr>
+        <tr>
+          <td><span class="condor">Projet Condor</span> : SLOC</td>
+          <td>1053</td>
+          <td>750</td>
+        </tr>
+        <tr>
+          <td><span class="condor">Projet Condor</span> : nombre de fichiers</td>
+          <td>43</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><span class="condor">Projet Condor</span> : temps de build total</td>
+          <td>12 min</td>
+          <td>2 min 30</td>
+        </tr>
+        <tr>
+          <td><span class="avsp">Projet AVSP</span> : SLOC</td>
+          <td>19183</td>
+          <td>878</td>
+        </tr>
+        <tr>
+          <td><span class="avsp">Projet AVSP</span> : nombre fichiers</td>
+          <td>188</td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <td><span class="avsp">Projet AVSP</span> : temps de build total</td>
+          <td>difficile à estimer, mais aux environs de la 1/2h</td>
+          <td>7 min</td>
+        </tr>
+        <tr>
+          <td><span class="avsp">Projet AVSP</span> : temps pour faire une release</td>
+          <td>un binome pendant 1/2 journée (avec erreurs)</td>
+          <td>5 min (safe)</td>
+        </tr>
+      </table>
+
+---
+##Témoignages sur Internet : nombre de lignes de code
+<table border="1">
+        <tr>
+          <th>maven2 ou ant</th>
+          <th>buildr</th>
+        </tr>
+        <tr>
+          <td>4652</td>
+          <td>698</td>
+        </tr>
+        <tr>
+          <td>768</td>
+          <td>28</td>
+        </tr>
+      </table>
+
+---
+##exemple
+````ruby
+VERSION_NUMBER = "1.0.0-SNAPSHOT"
+GROUP = 'barreverte.fr'
+COPYRIGHT = 'Barre Verte !'
+
+repositories.remote << 'http://www.ibiblio.org/maven2/'
+
+desc 'présentation buildr'
+define 'exemple' do
+  project.version = VERSION_NUMBER
+  project.group = GROUP
+
+  compile.using :target=>'1.5', :other=>['-encoding', 'ISO8859_1'], :deprecation=>false, :debug=>true
+
+  desc 'la lib A'
+  define 'A' do
+    package :jar
+  end
+
+  desc 'la lib B'
+  define 'B' do
+    compile.with project('A')
+    package :jar
+  end
+
+  desc 'la lib D'
+  define 'D' do
+    package :jar
+  end
+````
+
+---
+template: inverse
+# demo
+
+---
+# exemples
+ajouter des dépendances :
+````ruby
+desc 'infrastructure commune'
+define 'commons' do
+  compile.with LOG4J, MYSQL, SERVLET_API, COMMONS_LANG, XSTREAM
+  test.with JDOM, 'jspapi:jsp-api:jar:2.0', MOCKRUNNER, SPRING, SPRING_MOCK, MOCKITO, FEST
+  package :jar
+end
+````
+
+grouper des dépendances :
+
+````ruby
+SPRING_DAO = Buildr::group('spring-beans', 'spring-core', 'spring-dao', 'spring-jdbc',
+  :under=>'org.springframework', :version=>'1.2.6')
+````
+
+sortir du standard maven2/buildr :
+
+````ruby
+test.resources.from _(:src, :test, :data)
+````
+
+---
+archive dans un format spécifique :
+
+````ruby
+lib_generee = package :jar
+livrable = package :tgz
+livrable.include _('src/main/batch'), :as=>'batch'
+livrable.path('batch/lib').include lib_generee, compile.dependencies
+````
+
+faire des asserts sur les binaires :
+
+````ruby
+check livrable, "doit embarquer le jar scala-library. Merci de verifier si votre
+$SCALA_HOME pointe bien vers un répertoire valide" do
+  it.should contain('batch/lib/scala-library.jar')
+end
+````
+
+des droits de fichiers spécifiques :
+
+````ruby
+chmod 0755, Dir[_('src/main/avsp-batch/bin/*')]
+chmod 0644, FileList[_('src/main/avsp-batch/etc/**/*.properties')]
+````
+
+dépendances entre taches rake
+
+````ruby
+task :fitnesse => [:prerequis_fitnesse, :fitnesse_wiki_seul]
+````
+
+---
+intégration transparente avec les taches Ant :
+
+````ruby
+task :fitnesse_wiki_seul do |t|
+  ant(t.name) do |ant|
+    ant.taskdef :name=>'start_fitnesse', :classname=>'fitnesse.ant.StartFitnesseTask',
+:classpath=>FITNESSE_JAR
+    ant.start_fitnesse :wikidirectoryrootpath=>_('src/main'), :fitnesseport=>8082
+  end
+end
+````
+
+plusieurs jars en un seul :
+
+````ruby
+bouchons = package :jar, :file=>_('target/bouchons.jar')
+bouchons.merge artifacts(COMMONS_HTTPCLIENT, COMMONS_LANG, LOG4J, project('commons-test'))
+````
+
+ajouter des taches ant avant une commande buildr :
+
+````ruby
+compile.enhance ['ma_jolie_tache_ant']
+````
+
+setup de tests :
+
+````ruby
+test.setup { Rake::Task['une_belle_tache_rake'].execute }
+````
+
+---
+personaliser le fichier manifest :
+
+````ruby
+manifest['Implementation-Version'] = project.version
+manifest['Copyright']              = COPYRIGHT
+manifest['Mon-Champ-Personalise']  = TOUTE_AUTRE_VALEUR
+````
+
+paramétrer les repositories maven2 :
+
+````ruby
+repositories.remote << 'http://www.ibiblio.org/maven2/'
+repositories.remote << 'http://mirrors.ibiblio.org/pub/mirrors/maven2'
+repositories.remote << 'http://maven01b.serveur:8081/nexus/content/groups/public'
+repositories.release_to = { :url=>'sftp://maven01b.serveur:/var/maven-projets/maven',
+  :username=>'robert.johnson', :password=>'Xroads' }
+````
+
+---
+#Les défauts de buildr
+- installation difficile (gems)
+- très réactif / moins stable
+- nécessité de traduire les artifacts maven
+- peu adopté
+
+---
+#Les voisins
+##buildr, build like you code
+- Gradle : a better way to build (http://www.gradle.org/)
+- sbt : a simple build tool for Scala projects (http://code.google.com/p/simple-build-tool/)
+
+---
+# Références
+- le site officiel : buildr.apache.org
+- Martin Fowler "DSL for builds"
+- Why I don't like maven
+- Why I don't use maven
+- cette présentation : buildr.barreverte.fr et sur github
+
+---
+template: inverse
+# bisou !
+
+    </textarea>
+    <script type="text/javascript" src="remark-0.5.9.min.js">
+    </script>
+    <script type="text/javascript">
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
