@@ -1,6 +1,7 @@
 Présentation sur buildr en français.
-Les slides sont faits en HTML (Slidy2 du W3C) : cf http://www.w3.org/Talks/Tools/Slidy2
+Les slides sont faits avec remarkjs: voir http://remarkjs.com
 
+# Texte introduction
 "Montre-moi ton build, je te dirai comment se porte ton projet"
 
 Buildr est un outil qui s'appuie sur rake, "the ruby make", et sur le langage ruby. Buildr reprend les bonnes idées issues de maven (repositories maven, arborescence standard des sources, standard des commande compile, test, install...) tout en proposant un outil simple, transparent et facile à faire évoluer.
